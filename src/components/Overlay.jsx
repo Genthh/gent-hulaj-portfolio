@@ -43,7 +43,7 @@ export const Overlay = () => {
             Hello, I'm Gent Hulaj
           </h1>
           <p className="text-gray-300 text-sm sm:text-base md:text-lg">
-            Welcome to Three js Project
+            Welcome to My Portfolio
           </p>
           <p className="mt-3 text-sm sm:text-base md:text-lg">I know:</p>
           <ul className="leading-7 sm:leading-8 md:leading-9">
