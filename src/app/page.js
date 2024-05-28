@@ -1,7 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
-import { Canvas } from "@react-three/fiber";
 import styles from "./page.module.css";
 import React from "react";
 import ThreeCanvas from "@/components/ThreeCanvas";
@@ -9,21 +8,9 @@ import WelcomeTxt from "@/components/WelcomeTxt";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
-
 const Page = () => {
   const welcomeTextRef = useRef(null);
   const canvasRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(null);
-
-  const handlePlayPause = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-    } else {
-      audioRef.current.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -37,6 +24,7 @@ const Page = () => {
         },
         onComplete: () => {
           // Move the welcomeTextRef component up slowly
+
           gsap.to(welcomeTextRef.current, {
             y: "-100vh",
             duration: 2,
@@ -44,6 +32,7 @@ const Page = () => {
             onComplete: () => {
               welcomeTextRef.current.style.display = "none";
               canvasRef.current.style.display = "block";
+
               // Move the canvasRef component to the position where the welcome text was
               gsap.fromTo(
                 canvasRef.current,
